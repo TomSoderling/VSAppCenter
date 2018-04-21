@@ -2,7 +2,9 @@
 
 ## Current Nuggets
 
-- Slides from my App Center talk at the MN Enterprise Mobile meetup on 1/18/18
+- Slides from my App Center talk: Automate the lifecycle of your apps with Visual Studio App Center
+  - MN Enterprise Mobile meetup on 1/18/18
+  - Twin Cities Code Camp #22 on 4/21/18
 
 ### Scripts
 
