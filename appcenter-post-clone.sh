@@ -2,19 +2,25 @@
 
 # Insert the iOS App Center Secret into ApiKeys.cs file in my iOS project
 
+# set -x               # enable debug output
+# echo "bash version:" # sometimes helpful for debugging
+# bash --version
+
 set -e # Exit immediately if a command exits with a non-zero status (failure)
+
 
 ##################################################
 # Setup
+##################################################
 
 # 1.) The target file
-filename="$PWD/../[your project name]/ApiKeys.cs"
+filename="$PWD/../Pickster.Shared/ApiKeys.cs"
 
 # 2.) The text that will be replaced
 stringToFind="\[your iOS App Center secret goes here\]"
 
 # 3.) The secret it will be replaced with
-AppCenterSecret=$AppCenterSecretiOS # this is set up in the App Center build config
+AppCenterSecret=$AppCenterSecretiOS # this is the name of your environment variable defined in your App Center build configuration
 
 ##################################################
 
@@ -63,7 +69,13 @@ then
     #   s: substitute pattern2 ($AppCenterSecret) for first instance of pattern1 ($stringToFind) in a line
     cat $filename | sed -i -e "s/$stringToFind/$AppCenterSecret/" $filename
 
-    echo "App secret inserted"
+    # check the exit status of the last command executed
+    if [ "$?" = "0" ]; then 
+        echo "App secret inserted"
+    else
+        echo "App secret could not be inserted"
+        exit 1 # exit with unspecified error code.
+    fi    
 
     break # found the line, so break out of loop
 fi
