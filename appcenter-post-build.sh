@@ -102,8 +102,16 @@ echo
 
 if [ $shouldRunUITestsInTestCloud != "yes" ]
 then
-    echo "Should run UI tests in Test Cloud:" $shouldRunUITestsInTestCloud
+    echo "> Should run UI tests in Test Cloud:" $shouldRunUITestsInTestCloud
 else
+    echo "> Build UI Test project"
+    echo "Command: find $APPCENTER_SOURCE_DIRECTORY -regex '.*UITest.*\.csproj' -exec msbuild {} /t:Build \;"
+    echo
+
+    # using msbuild, build the "Build" target
+    find $APPCENTER_SOURCE_DIRECTORY -regex '.*UITest.*\.csproj' -exec msbuild {} /t:Build \;
+
+    echo
     echo "> UI test command to run:"
     echo "appcenter test run uitest" 
     echo "--app $appName" 
