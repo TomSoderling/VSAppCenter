@@ -14,7 +14,7 @@ set -e # Exit immediately if a command exits with a non-zero status (failure)
 ##################################################
 
 # 1.) The target file
-filename="$PWD/../[your project path]/ApiKeys.cs"
+filename="$PWD/../Pickster.Shared/ApiKeys.cs"
 
 # 2.) The text that will be replaced
 stringToFind="\[your iOS App Center secret goes here\]"
